@@ -31,7 +31,8 @@
     "./src/home/home.ts",
     "./src/index.ts",
     "./src/login/login.ts",
-    "./src/signup/signup.ts"
+    "./src/signup/signup.ts",
+    "./src/ui-comps/button-basic/button-basic.ts"
   ],
   "filesGlob": [
     "./src/**/*.ts",

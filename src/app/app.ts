@@ -1,4 +1,4 @@
-import {View, Component} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {Location, RouteConfig, RouterLink, Router} from 'angular2/router';
 
 import {LoggedInRouterOutlet} from './LoggedInOutlet';
@@ -11,12 +11,11 @@ declare var require;
 let template = require('./app.html');
 
 @Component({
-  selector: 'auth-app'
-})
-@View({
+  selector: 'auth-app',
   template: template,
   directives: [ LoggedInRouterOutlet ]
 })
+
 @RouteConfig([
   { path: '/', redirectTo: ['/Home'] },
   { path: '/home', component: Home, as: 'Home' },

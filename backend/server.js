@@ -5,6 +5,7 @@ var logger = require('morgan'),
   errorhandler = require('errorhandler'),
   dotenv = require('dotenv'),
   bodyParser = require('body-parser');
+  config = require('./config.json');
 
 var app = express();
 
@@ -36,8 +37,8 @@ if (process.env.NODE_ENV === 'development') {
 app.use(require('./anonymous-routes'));
 app.use(require('./protected-routes'));
 app.use(require('./user-routes'));
-
-var port = process.env.PORT || 3001;
+console.log(config);
+var port = process.env.PORT || config.port;
 
 http.createServer(app).listen(port, function(err) {
   console.log('listening in http://localhost:' + port);

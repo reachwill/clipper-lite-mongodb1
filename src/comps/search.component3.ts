@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter,View} from 'angular2/core';
+import {Component, Output, EventEmitter} from 'angular2/core';
 import {Control} from 'angular2/common';
 import {YouTubeService} from './services/youtube.service';
 import {HTTP_PROVIDERS}  from 'angular2/http';
@@ -6,14 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'search',
-  providers: [YouTubeService,HTTP_PROVIDERS]
-
-
-
-
-})
-
-@View({
+  providers: [YouTubeService,HTTP_PROVIDERS],
   directives: [],
   template: `
    <input [ngFormControl]="search" placeholder="search">
@@ -30,7 +23,12 @@ import { Observable } from 'rxjs/Observable';
     </ul>
   `
 
+
+
+
 })
+
+
 
 export class Search  {
 

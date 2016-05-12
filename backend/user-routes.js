@@ -34,7 +34,7 @@ app.post('/users', function(req, res) {
 
   //WG: connect to mongodb
 
-  mongoose.connect('mongodb://localhost/usersTest');
+  mongoose.connect(config.dbConnector);
 
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
@@ -102,7 +102,7 @@ app.post('/sessions/create', function(req, res) {
 
   //WG: connect to mongodb
 
-  mongoose.connect('mongodb://localhost/usersTest');
+  mongoose.connect(config.dbConnector);
 
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));

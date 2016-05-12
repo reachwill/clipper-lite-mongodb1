@@ -1,3 +1,5 @@
 {
-  "secret": "ngEurope rocks!"
+  "secret": "ngEurope rocks!",
+  "dbConnector":"mongodb://localhost/usersTest",
+  "port":3001
 }

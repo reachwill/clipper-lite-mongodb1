@@ -16,7 +16,7 @@ module.exports = {
       'es6-shim',
       'es6-promise',
       'reflect-metadata',
-      'zone.js/dist/zone-microtask',
+      'zone.js/dist/zone',
       'zone.js/dist/long-stack-trace-zone',
       // Angular2
       'angular2/platform/browser',
@@ -88,7 +88,7 @@ module.exports = {
      /zone\.js\/dist\/.+/,
      /reflect-metadata/,
      /es(6|7)-.+/,
-     /.zone-microtask/, 
+     /.zone-microtask/,
      /.long-stack-trace-zone/
     ]
   },
@@ -97,13 +97,13 @@ module.exports = {
     new CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js', minChunks: Infinity }),
     new CommonsChunkPlugin({ name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app', 'vendor'] })
   ],
-  
+
   // Other module loader config
   tslint: {
     emitErrors: false,
     failOnHint: false
   },
-  
+
   // our Development Server configs
   // our Webpack Development Server config
   devServer: {
@@ -124,4 +124,3 @@ function rootNode(args) {
   args = sliceArgs(arguments, 0);
   return root.apply(path, ['node_modules'].concat(args));
 }
-

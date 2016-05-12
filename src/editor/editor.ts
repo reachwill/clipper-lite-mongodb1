@@ -1,4 +1,4 @@
-import { Component, View,Input } from 'angular2/core';
+import { Component, Input } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { Http, Headers } from 'angular2/http';
 import { AuthHttp } from 'angular2-jwt';
@@ -9,6 +9,8 @@ import { Search } from '../comps/search.component3';
 import {BigRedButton} from '../comps/bigred2.component';
 import {YTPlayer} from '../comps/ytplayer.component';
 import {CopyBox} from '../comps/copybox.component';
+
+
 
 
 
@@ -23,16 +25,14 @@ declare var unescape:any;
 
 
 let template = require('./editor.html');
-
+let config = require('../common/config.json');
 
 @Component({
-  selector: 'editor'
-})
-@View({
+  selector: 'editor',
   directives: [CORE_DIRECTIVES,BigRedButton,Search,YTPlayer,CopyBox],
   template: template
-
 })
+
 export class Editor {
   jwt: string;
   decodedJwt: string;
@@ -73,7 +73,7 @@ export class Editor {
   toggleSearch(event){
       event.preventDefault();
       //hide / show searchBox component
-      $('#searchBox').toggle();
+      $('#searchBox').slideToggle();
   }
 
   save(event, username) {
@@ -81,7 +81,7 @@ export class Editor {
     let body = JSON.stringify({userName: this.userName});
     console.log(body);
     return;
-    // this.http.post('http://localhost:3001/sessions/save', body, { headers: contentHeaders })
+    // this.http.post(config.domain+':'+config.port+'/sessions/save', body, { headers: contentHeaders })
     //   .subscribe(
     //     response => {
     //       //localStorage.setItem('jwt', response.json().id_token);
@@ -152,16 +152,16 @@ export class Editor {
 
 
   callAnonymousApi() {
-    this._callApi('Anonymous', 'http://localhost:3001/api/random-quote');
+    this._callApi('Anonymous', config.domain+':'+config.port+'/api/random-quote');
   }
 
   callSecuredApi() {
-    this._callApi('Secured', 'http://localhost:3001/api/protected/random-quote');
+    this._callApi('Secured', config.domain+':'+config.port+'/api/protected/random-quote');
   }
 
   saveSecuredApi() {
 
-    this._callApi('SecuredPost', 'http://localhost:3001/api/protected/save');
+    this._callApi('SecuredPost', config.domain+':'+config.port+'/api/protected/save');
   }
 
   _callApi(type, url) {
