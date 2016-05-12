@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true
+  },
+  "files": [
+    "./src/app/app.ts",
+    "./src/app/LoggedInOutlet.ts",
+    "./src/common/headers.ts",
+    "./src/comps/app.component.ts",
+    "./src/comps/app.component(WithRoutes).ts",
+    "./src/comps/bigred.component.ts",
+    "./src/comps/bigred2.component.ts",
+    "./src/comps/consumer.component.ts",
+    "./src/comps/copybox.component.ts",
+    "./src/comps/editor.component.ts",
+    "./src/comps/search.component.ts",
+    "./src/comps/search.component2.ts",
+    "./src/comps/search.component3.ts",
+    "./src/comps/services/youtube.service.ts",
+    "./src/comps/SIMPLEytplayer.consumer.component.ts",
+    "./src/comps/social.component.ts",
+    "./src/comps/youtube-api/youtube.ts",
+    "./src/comps/ytplayer.component.ts",
+    "./src/comps/ytplayer.consumer.component.ts",
+    "./src/editor/editor.ts",
+    "./src/home/home.ts",
+    "./src/index.ts",
+    "./src/login/login.ts",
+    "./src/signup/signup.ts"
+  ],
+  "filesGlob": [
+    "./src/**/*.ts",
+    "!./node_modules/**/*.ts"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": true
+  }
+}

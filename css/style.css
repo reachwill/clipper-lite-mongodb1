@@ -1,0 +1,154 @@
+@import url(reset.css);
+@import url(fonts/fontello-a9b57c15/css/fontello.css);
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body>section {
+    width: 100%;
+    max-width: 960px;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+    position: relative;
+}
+
+#edit-controls {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#social-toolbar {
+    margin: 30px 0;
+    width: 98%;
+}
+
+#copy-input {
+    width: 100%;
+    text-align: center;
+    font-size: 100%;
+    border: none;
+}
+
+
+/********Components*******************************/
+
+
+/*general style for all video players*/
+
+video {
+    border: 1px solid black;
+    width: 90%;
+    height: 300px;
+    background: #ccc;
+}
+
+
+/*record button*/
+
+big-red-button {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+big-red-button #recordBtn {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: white;
+    color: red;
+    border: 1px solid red;
+    border-radius: 3px;
+    padding: 9px 9px 7px 7px;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+big-red-button input {
+    display: inline-block;
+    width: 60px;
+    height: 38px;
+    background: white;
+    color: red;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 3px;
+    color: #666;
+    font-size: 1.2em;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.search {
+    background: #ccc url(../media/clipper-logo-play-lowres.png) no-repeat 2%;
+    display: inline-block;
+    width: 96.333%;
+    height: 55px;
+    padding: 10px 10px 0 0;
+    text-align: right;
+    color: white;
+    font-size: 2em;
+}
+
+.icon-search {
+    border: 2px solid white;
+    border-radius: 3px;
+}
+
+#searchBox {
+    position: absolute;
+    top: 45px;
+    left: 3%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 2%;
+    background: white;
+    width: 90%;
+    min-height: 500px;
+    display: none;
+    z-index: 100;
+}
+
+.video-container {
+    width: 98%;
+    height: 400px;
+}
+
+.red {
+    background: red;
+}
+
+#player {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.player-container {
+    padding: 4%;
+    width: 90%;
+}
+
+.right {
+    float: right;
+}
+
+ul>li {
+    padding: 4%;
+    cursor: pointer;
+}
+
+ul>li a {
+    color: black;
+    text-decoration: none;
+}
