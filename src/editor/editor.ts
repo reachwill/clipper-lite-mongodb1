@@ -62,7 +62,7 @@ export class Editor {
     this.jwt = localStorage.getItem('jwt');
     this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
     this.user = this.decodedJwt;
-    this.userName = this.user['name'];
+    //this.userName = this.user['name'];
   }
 
   logout() {
