@@ -1,5 +1,7 @@
 {
   "secret": "ngEurope rocks!",
-  "dbConnector":"mongodb://localhost/usersTest",
+  "dbConnector":"mongodb://localhost/",
+  "usersCollection":"usersTest",
+  "clipsCollection":"clips",
   "port":3001
 }

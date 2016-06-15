@@ -17,17 +17,21 @@ export class LoggedInRouterOutlet extends RouterOutlet {
     // The Boolean following each route below denotes whether the route requires authentication to view
     this.publicRoutes = {
       'login': true,
-      'signup': true
+      'signup': true,
+      'home':true,
+      'editor':true,
+      'projects':false
     };
   }
 
   activate(instruction: ComponentInstruction) {
     let url = instruction.urlPath;
+    //console.log('XXXX'+url);
     if (!this.publicRoutes[url] && !localStorage.getItem('jwt')) {
 
       // todo: redirect to Login, may be there a better way?
       this.parentRouter.navigateByUrl('/login');
-      
+
     }
     return super.activate(instruction);
   }

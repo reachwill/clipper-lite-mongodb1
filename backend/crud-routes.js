@@ -7,34 +7,66 @@ var app = module.exports = express.Router();
 
 
 
-// XXX: This should be a database of users :).
 
-
-var userSchema = mongoose.Schema({
-  name: String,
-  password: String,
-  date: Date
+var GroupSchema = mongoose.Schema({
+  groupId:Number,
+  read:Boolean,
+  write:Boolean
 });
 
-var User = mongoose.model('User', userSchema);
+var AnnotationSchema = mongoose.Schema({
+  title:String,
+  text:String,
+  time:Number,
+  priveleges:[
+    //{groups:[GroupSchema]}
+  ]
+});
 
-//method to create jwt token
-function createToken(user) {
-  //uses lodash to easily moit password from token
-  return jwt.sign(_.omit(user, 'password'), config.secret, {
-    expiresInMinutes: 60 * 5
-  });
-}
+var ClipSchema = mongoose.Schema({
+  title:String,
+  decsription:String,
+  vidUrl: String,
+  start:Number,
+  end:Number,
+  annotations:[AnnotationSchema]
+});
 
-app.post('/users', function(req, res) {
+var CliplistSchema=mongoose.Schema({
+  title:String,
+  description:String,
+  clips:[ClipSchema]
+});
 
-  if (!req.body.username || !req.body.password) {
-    return res.status(400).send("You must send the username and the password");
+var ProjectSchema =mongoose.Schema({
+  title: String,
+  description:String,
+  cliplists:[CliplistSchema]
+});
+
+
+
+
+var projectSchema = mongoose.Schema({
+  projects:Array
+});
+
+
+
+
+var Project = mongoose.model('Project', projectSchema);
+
+
+
+app.post('/clip/save', function(req, res) {
+
+  if (!req.body.vidUrl) {
+    return res.status(400).send("Load a video");
   }
 
   //WG: connect to mongodb
 
-  mongoose.connect(config.dbConnector+config.usersCollection);
+  mongoose.connect(config.dbConnector+config.clipsCollection);
 
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
@@ -43,7 +75,7 @@ app.post('/users', function(req, res) {
   });
 
 
-
+return;
   //User.collection.remove() //use to clear collection during dev
 
   //    check user does not exist
@@ -102,7 +134,7 @@ app.post('/sessions/create', function(req, res) {
 
   //WG: connect to mongodb
 
-  mongoose.connect(config.dbConnector+config.usersCollection);
+  mongoose.connect(config.dbConnector);
 
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));

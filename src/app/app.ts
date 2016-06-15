@@ -8,6 +8,7 @@ import {Signup} from '../signup/signup';
 import {Editor} from '../editor/editor';
 
 declare var require;
+
 let template = require('./app.html');
 
 @Component({
@@ -25,8 +26,19 @@ let template = require('./app.html');
 ])
 
 export class App {
+  public loggedIn=false;
 
   constructor(public router: Router) {
+    if(localStorage.getItem('jwt')){
+      this.loggedIn=true;
+    }
 
   }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.parent.navigateByUrl('/login');
+  }
+
+
 }

@@ -1,14 +1,14 @@
-<div class="signup center-block jumbotron">
-  <h1>Signup</h1>
-  <form role="form" (submit)="signup($event, username.value, password.value)">
+<div class="signup center-block ">
+
+  <form form-horizontal role="form" (submit)="signup($event, username.value, password.value)">
     <div class="form-group">
-      <label for="username">Username</label>
+      <label class="sr-only" for="username">Username</label>
       <input type="text" #username class="form-control" id="username" placeholder="Username" required>
     </div>
     <div class="form-group">
-      <label for="password">Password</label>
+      <label class="sr-only" for="password">Password</label>
       <input type="password" #password class="form-control" id="password" placeholder="Password">
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-success form-control">Sign Up</button>
   </form>
 </div>

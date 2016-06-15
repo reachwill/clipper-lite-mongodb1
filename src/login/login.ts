@@ -4,6 +4,7 @@ import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
 import { Http, Headers } from 'angular2/http';
 import { contentHeaders } from '../common/headers';
 declare var require:any;
+declare var $:any;
 
 let styles   = require('./login.css');
 let template = require('./login.html');
@@ -27,7 +28,10 @@ export class Login {
       .subscribe(
         response => {
           localStorage.setItem('jwt', response.json().id_token);
-          this.router.parent.navigateByUrl('/editor');
+          this.router.parent.navigateByUrl('/home');
+          $('.login').hide();
+          $('.logout').show();
+          $('.signup').hide();
         },
         error => {
           alert(error.text());

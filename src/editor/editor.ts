@@ -41,8 +41,8 @@ export class Editor {
 
   _vidURL:string;
   _vidId:string;
-  _start:string;
-  _end:string;
+  _start:string= 'Start';
+  _end:string= 'Stop';
   _shareURL:string;
   _shareURLIsReady:boolean;
   _int;
@@ -58,11 +58,17 @@ export class Editor {
 
   constructor(public router: Router, public http: Http, public authHttp: AuthHttp,data: RouteData) {
     this._logData=(`${data.get('isLoggedIn')}`);
-    this._loggedIn = (String(this._loggedIn).length>0);
+    this._loggedIn = this._logData!='null';
+
     this.jwt = localStorage.getItem('jwt');
     this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
-    this.user = this.decodedJwt;
-    //this.userName = this.user['name'];
+//alert(this._logData!='null');
+    if(this.decodedJwt!=null){
+      this.user = this.decodedJwt;
+      this.userName = this.user['name'];
+      console.log(this.userName)
+    }
+
   }
 
   logout() {
@@ -73,25 +79,26 @@ export class Editor {
   toggleSearch(event){
       event.preventDefault();
       //hide / show searchBox component
-      $('#searchBox').slideToggle();
+      //$('#searchBox').slideToggle();
   }
 
   save(event, username) {
     event.preventDefault();
     let body = JSON.stringify({userName: this.userName});
     console.log(body);
-    return;
-    // this.http.post(config.domain+':'+config.port+'/sessions/save', body, { headers: contentHeaders })
-    //   .subscribe(
-    //     response => {
-    //       //localStorage.setItem('jwt', response.json().id_token);
-    //       //this.router.parent.navigateByUrl('/editor');
-    //     },
-    //     error => {
-    //       alert(error.text());
-    //       console.log(error.text());
-    //     }
-    //   );
+
+    this.http.post(config.domain+':'+config.port+'/clip/save', body, { headers: contentHeaders })
+      .subscribe(
+        response => {
+          //localStorage.setItem('jwt', response.json().id_token);
+          //this.router.parent.navigateByUrl('/editor');
+          console.log(response.json());
+        },
+        error => {
+          alert(error.text());
+          console.log(error.text());
+        }
+      );
   }
 
   recordBtnClicked(event){
@@ -116,7 +123,7 @@ export class Editor {
       }
      this._shareURL = 'http://www.youtube.com/v/'+this._vidId+'?start='+this._start+'&end='+this._end+'&autoplay=1';
      // check if _shareURLIsReady is worth showing (i.e. is anything still undefined)
-     if(this._shareURL.search("undefined")>-1){
+     if(this._shareURL.search("undefined")>-1||this._shareURL.search("Start")>-1||this._shareURL.search("Stop")>-1){
          this._shareURLIsReady = false;
      }else{
          this._shareURLIsReady = true;
@@ -143,7 +150,7 @@ export class Editor {
       //record the unique id of th video
       this._vidId = this._vidURL.substr(this._vidURL.lastIndexOf('?')+3);
       // toggle visiblity of searchBox component
-      $('#searchBox').fadeToggle();
+      //$('#searchBox').fadeToggle();
   }
 
   getQueryStringValue (key) {

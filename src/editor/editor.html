@@ -1,13 +1,9 @@
-<div *ngIf="_loggedIn">
+<div >
 
 
-  <div id="edit-controls">
 
-    <a href="#" class="search" (click)="toggleSearch($event)"><span class="icon-search"></span></a>
-    <a (click)="save()">Save</a>
-    <a (click)="logout()">Logout</a>
-    
-  </div>
+
+  <a href="#" class="search youtube-search" data-toggle="modal" data-target="#myModal" >Search <span class="glyphicon glyphicon-search"></span></a>
 
   <yt-player [vidId]="_vidId" #movieplayer></yt-player>
   <h3 *ngIf="response">{{response}}</h3>
@@ -28,7 +24,11 @@
   </div> -->
 
   <copy-box [shareURL]="_shareURL" [shareURLIsReady]="_shareURLIsReady"></copy-box>
+
   <search id="searchBox" (^click)="searchResultClicked($event)" (resultClicked)="searchResultClicked($event)"></search>
+  <div id="edit-controls" *ngIf="_loggedIn">
+    <a (click)="save($event)" class="btn btn-default ">Save</a>
+  </div>
 
 
 </div>

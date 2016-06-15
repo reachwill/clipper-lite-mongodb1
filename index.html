@@ -1,35 +1,77 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
-  <title>Angular2 demo by @Auth0</title>
+    <title>Clipper</title>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <base href="/">
-  <!-- styles -->
-  <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="css/style.css" />
-  <!-- Util -->
-  <script type="text/javascript" src="/node_modules/jwt-decode/build/jwt-decode.js"></script>
-  <!-- Video JS -->
-  <link href="http://vjs.zencdn.net/5.7.1/video-js.css" rel="stylesheet">
-  <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-  <script src="http://vjs.zencdn.net/5.7.1/video.js"></script>
-  <script src="vendors/videojs-youtube.js"></script>
+    <base href="/">
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Util -->
+    <script type="text/javascript" src="/node_modules/jwt-decode/build/jwt-decode.js"></script>
+    <!-- Video JS -->
+    <link href="http://vjs.zencdn.net/5.7.1/video-js.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    <script src="http://vjs.zencdn.net/5.7.1/video.js"></script>
+    <script src="vendors/videojs-youtube.js"></script>
 </head>
+
 <body>
 
-  <auth-app>
-    Loading...
-  </auth-app>
-  <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-  <!-- Commmon files to be cached -->
-  <script src="/build/common.js"></script>
-  <!-- Angular2 files -->
-  <script src="/build/vendor.js"></script>
-  <!-- App script -->
-  <script src="/build/app.js"></script></body>
+
+
+
+
+    <auth-app>
+        Loading...
+    </auth-app>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="/node_modules/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Commmon files to be cached -->
+    <script src="/build/common.js"></script>
+    <!-- Angular2 files -->
+    <script src="/build/vendor.js"></script>
+    <!-- App script -->
+    <script src="/build/app.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+if(localStorage.getItem('jwt')==null||localStorage.getItem('jwt')=='null'||localStorage.getItem('jwt')=='undefined'||localStorage.getItem('jwt')==undefined){
+  $('.login').show();
+  $('.signup').show();
+  $('.logout').hide();
+}else{
+  $('.login').hide();
+  $('.logout').show();
+  $('.signup').hide();
+}
+
+            var url = window.location.pathname;
+            var filename = url.substring(url.lastIndexOf('/') + 1);
+            $('.navbar-nav li').each(function() {
+                console.log($(this))
+                if ($(this).hasClass(filename)) {
+                    $(this).addClass('active');
+                }
+            });
+
+
+
+        });
+
+
+
+    </script>
+
+
+
+</body>
+
 </html>
