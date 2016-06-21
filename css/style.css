@@ -5,11 +5,9 @@ body {
     /*background:url(images/bg1.jpeg) no-repeat;
     background-size: cover;*/
 }
-
-*:focus{
-  outline:none !important;
+*:focus {
+    outline: none !important;
 }
-
 body>section {
     width: 100%;
     max-width: 960px;
@@ -18,36 +16,28 @@ body>section {
     padding: 5px;
     position: relative;
 }
-
 #edit-controls {
     width: 100%;
     margin: 50px 0;
-
 }
-
 #social-toolbar {
     margin: 30px 0;
     width: 98%;
 }
-
 #copy-input {
     width: 100%;
     text-align: center;
     font-size: 100%;
     border: none;
 }
-
-.youtube-search{
-  background: url(images/youtube-icon.ico) no-repeat 98%;
-  background-size: contain;
-  padding-right: 30px;
+.youtube-search {
+    background: url(images/youtube-icon.ico) no-repeat 98%;
+    background-size: contain;
+    padding-right: 30px;
 }
-#startTime{
-  margin-bottom: 5px;
+#startTime {
+    margin-bottom: 5px;
 }
-
-
-
 
 /********Components*******************************/
 
@@ -61,8 +51,8 @@ video {
     background: #ccc;
 }
 
-
 /*record button*/
+
 
 /*big-red-button {
     text-align: center;
@@ -98,6 +88,7 @@ big-red-button input {
     vertical-align: middle;
 }*/
 
+
 /*.search {
     background: #ccc url(../media/clipper-logo-play-lowres.png) no-repeat 2%;
     display: inline-block;
@@ -113,6 +104,7 @@ big-red-button input {
     border: 2px solid white;
     border-radius: 3px;
 }*/
+
 
 /*#searchBox {
     position: absolute;
@@ -132,19 +124,16 @@ big-red-button input {
     width: 98%;
     height: 400px;
 }
-
 .red {
     /*background: red;*/
-    border:2px solid red;
+    border: 2px solid red;
 }
-
 #player {
     position: relative;
     width: 100%;
     height: 0;
     padding-bottom: 56.25%;
 }
-
 video {
     position: absolute;
     top: 0;
@@ -152,44 +141,38 @@ video {
     width: 100%;
     height: 100%;
 }
-
 .player-container {
     padding: 4%;
     width: 90%;
 }
-
 .right {
     float: right;
 }
-
 ul>li {
     /*padding: 4%;*/
     cursor: pointer;
 }
-
 ul>li a {
     color: black;
     text-decoration: none;
 }
 
 /*boostrap style mods*/
-.navbar-inverse{
-  background: #00658b ;
-}
 
-.navbar-brand{
-  min-width:100px;
-  background: url(images/clipper-logo-play-white-hires.png) no-repeat ;
-  background-position: center;
-  background-size: contain;
-  margin:0 10px;
+.navbar-inverse {
+    background: #00658b;
 }
-
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{
-  background-color: #7cb8cd;
+.navbar-brand {
+    min-width: 100px;
+    background: url(images/clipper-logo-play-white-hires.png) no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin: 0 10px;
 }
-
-.jumbotron{
-  background-color: rgba(234, 98, 0, 0.5);
-  color:white;
+.navbar-inverse .navbar-nav> .active> a, .navbar-inverse .navbar-nav> .active> a:hover, .navbar-inverse .navbar-nav> .active> a:focus {
+    background-color: #7cb8cd;
+}
+.jumbotron {
+    background-color: rgba(234, 98, 0, 0.5);
+    color: white;
 }

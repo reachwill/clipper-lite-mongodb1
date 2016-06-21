@@ -6,6 +6,7 @@ import {Home} from '../home/home';
 import {Login} from '../login/login';
 import {Signup} from '../signup/signup';
 import {Editor} from '../editor/editor';
+import {SavedClips} from '../savedClips/savedClips';
 
 declare var require;
 
@@ -22,7 +23,8 @@ let template = require('./app.html');
   { path: '/home', component: Home, as: 'Home' },
   { path: '/login', component: Login, as: 'Login' },
   { path: '/signup', component: Signup, as: 'Signup' },
-  { path: '/editor', component: Editor, as: 'Editor', data: {isLoggedIn: localStorage.getItem('jwt')} }
+  { path: '/editor', component: Editor, as: 'Editor', data: {isLoggedIn: localStorage.getItem('jwt')} },
+  { path: '/savedClips', component: SavedClips, as: 'SavedClips', data: {isLoggedIn: localStorage.getItem('jwt')} }
 ])
 
 export class App {

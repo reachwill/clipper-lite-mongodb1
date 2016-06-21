@@ -22,6 +22,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use(function(err, req, res, next) {
+  // res.header("Access-Control-Allow-Origin", "localhost:3000");
+  // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   if (err.name === 'StatusError') {
     res.send(err.status, err.message);
   } else {

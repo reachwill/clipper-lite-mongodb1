@@ -5,6 +5,9 @@ import { ROUTER_PROVIDERS } from 'angular2/router';
 import { Http, HTTP_PROVIDERS } from 'angular2/http';
 import { AuthConfig, AuthHttp } from 'angular2-jwt';
 
+
+
+
 //from clipper-phase3
 import 'rxjs/Rx';
 
@@ -16,6 +19,7 @@ bootstrap(
   [
     FORM_PROVIDERS,
     ROUTER_PROVIDERS,
+    
     HTTP_PROVIDERS,
     provide(AuthHttp, {
       useFactory: (http) => {

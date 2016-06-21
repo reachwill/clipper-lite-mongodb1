@@ -1,8 +1,8 @@
 import { Component, Input } from 'angular2/core';
-import { CORE_DIRECTIVES } from 'angular2/common';
+import { CORE_DIRECTIVES,FORM_DIRECTIVES } from 'angular2/common';
 import { Http, Headers } from 'angular2/http';
 import { AuthHttp } from 'angular2-jwt';
-import { Router,RouteData } from 'angular2/router';
+import { Router,RouteData,RouterLink } from 'angular2/router';
 import { contentHeaders } from '../common/headers';
 
 import { Search } from '../comps/search.component3';
@@ -29,7 +29,7 @@ let config = require('../common/config.json');
 
 @Component({
   selector: 'editor',
-  directives: [CORE_DIRECTIVES,BigRedButton,Search,YTPlayer,CopyBox],
+  directives: [CORE_DIRECTIVES,BigRedButton,Search,YTPlayer,CopyBox,RouterLink, FORM_DIRECTIVES],
   template: template
 })
 
@@ -84,14 +84,12 @@ export class Editor {
 
   save(event, username) {
     event.preventDefault();
-    let body = JSON.stringify({userName: this.userName});
-    console.log(body);
+    var obj = {"username":this.userName,"vidUrl":this._vidURL,"start":this._start,"end":this._end,"shareUrl":this._shareURL,"userId":this.userName};
+    let body = JSON.stringify(obj);
 
     this.http.post(config.domain+':'+config.port+'/clip/save', body, { headers: contentHeaders })
       .subscribe(
         response => {
-          //localStorage.setItem('jwt', response.json().id_token);
-          //this.router.parent.navigateByUrl('/editor');
           console.log(response.json());
         },
         error => {
@@ -102,7 +100,7 @@ export class Editor {
   }
 
   recordBtnClicked(event){
-      console.log('record');
+      //console.log('record');
 
        //toggle class to visually show state of recording start / end times
       $('.player-container').toggleClass('red');
@@ -121,7 +119,7 @@ export class Editor {
 
           videojs('#player').pause()
       }
-     this._shareURL = 'http://www.youtube.com/v/'+this._vidId+'?start='+this._start+'&end='+this._end+'&autoplay=1';
+     this._shareURL = 'http://www.youtube.com/v/'+this._vidId+'?start='+this._start+'&end='+this._end;
      // check if _shareURLIsReady is worth showing (i.e. is anything still undefined)
      if(this._shareURL.search("undefined")>-1||this._shareURL.search("Start")>-1||this._shareURL.search("Stop")>-1){
          this._shareURLIsReady = false;
@@ -130,7 +128,7 @@ export class Editor {
          //save to mongoDB via secured API
          //this.saveSecuredApi();
      }
-     console.log(this._shareURL);
+     //console.log(this._shareURL);
   }
 
 
@@ -142,11 +140,11 @@ export class Editor {
 
 
    searchResultClicked(event){
-      //console.log(event.id)
+      console.log(event);
       videojs('#player').src({"src":"https://www.youtube.com/watch?v="+event.id});
       videojs('#player').play();
       //record current video url in public vidURL var ready with & for start end params
-      this._vidURL = videojs('#player').src().src + '&';
+      this._vidURL = videojs('#player').src().src ;
       //record the unique id of th video
       this._vidId = this._vidURL.substr(this._vidURL.lastIndexOf('?')+3);
       // toggle visiblity of searchBox component

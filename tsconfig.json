@@ -31,6 +31,7 @@
     "./src/home/home.ts",
     "./src/index.ts",
     "./src/login/login.ts",
+    "./src/savedClips/savedClips.ts",
     "./src/signup/signup.ts"
   ],
   "filesGlob": [
